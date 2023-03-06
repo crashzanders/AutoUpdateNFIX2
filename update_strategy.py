@@ -14,7 +14,7 @@ def check_version_online(url):
     pattern = r"v\d+\.\d+\.\d+"
     match = re.search(pattern, content)
     version_online = match.group(0)
-    print("Version de la strategie en ligne : " +version_online)
+    print("Online version of the strategy : " +version_online)
     return version_online
 
 def check_version_file(file):
@@ -23,7 +23,7 @@ def check_version_file(file):
     pattern = r"v\d+\.\d+\.\d+"
     match = re.search(pattern, content)
     version = match.group(0)
-    print("Version de la strategie locale : " +version)
+    print("Local strategy version : " +version)
     return version
 
 def update_file(url, file):

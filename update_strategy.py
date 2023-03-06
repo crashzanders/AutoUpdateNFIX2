@@ -37,7 +37,7 @@ def send_notification(bot_token, chat_id, message):
     requests.get(url_telegram).json()
 
 print("--- LAUNCHING THE STRATEGY UPDATE SCRIPT ---")
-current_time = datetime.now().strftime("%d/%m/%Y - %H:%M")
+current_time = datetime.now().strftime("%Y/%m/%d - %H:%M")
 print("--- "+current_time+" ---")
 version_online = str(check_version_online(url))
 version_file= str(check_version_file(file))

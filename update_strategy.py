@@ -12,7 +12,7 @@ file_blacklist = "/your-path/blacklist-kucoin.json" #Change with your blacklist 
 command = "cd /bots/freqtrade && /usr/bin/docker-compose restart" #Change with your docker-compose file path
 bot_token = "your-telegram-bot-token" #Change with your Telegram bot token
 chat_id = "your-telegram-chat-id" #Change with your Telegram chat ID
-change = false
+change = False
 
 def check_version_online(url):
     file_path = url
@@ -54,7 +54,7 @@ if version_file != version_online:
     send_notification(bot_token, chat_id, "New version of NostalgiaForInfinityX2 strategy detected. Upgrade in progress...")
     update_file(url, file)
     print("Updated strategy")
-    change = true
+    change = True
 else:
     print("Strategy : Updated version")
 
@@ -68,12 +68,12 @@ if remote_content != local_content:
     send_notification(bot_token, chat_id, "New version of blacklist detected. Upgrade in progress...")
     with open(file_blacklist, 'w') as f:
         f.write(remote_content)
-    change = true
+    change = True
 else:
     print("Blacklist : Updated version")
 
 #Restart process
-if change == true:
+if change == True:
     send_notification(bot_token, chat_id, "Upgrade completed. Restart of services...")
     subprocess.run(command, shell=True)
     print("Restarted services")

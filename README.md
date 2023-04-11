@@ -1,8 +1,8 @@
 # AutoUpdateNFIX2
-Python script that automates the update of the freqtrade strategy of NostalgiaForInfinityX2 (https://github.com/iterativv/NostalgiaForInfinity).
+Python script that automates the update of the freqtrade strategy of NostalgiaForInfinityX2 (https://github.com/iterativv/NostalgiaForInfinity) and the blacklist associated with your exchange.
 
 ## How does it work?
-The script checks the online and local version of the strategy.
+The script checks the online and local version of the strategy and blacklist.
 If there is a difference, it updates the local version, restarts the docker, and notifies the user on Telegram of the update.
 
 ![upgrade screen telegram](https://i.imgur.com/66s1rgV.png)
@@ -35,5 +35,5 @@ And I add the following line:
 ```
 
 ## Next developments:
-- ~~Update the blacklist associated with his exchange and his crypto currency at the same time
+- ~~Update the blacklist associated with his exchange and his crypto currency at the same time~~
 - Automatic execution of the script at each commit of the NFI repo.

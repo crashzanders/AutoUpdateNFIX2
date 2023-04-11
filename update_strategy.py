@@ -6,12 +6,12 @@ import requests, re, subprocess
 from datetime import datetime
 
 url = "https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityX2.py"
-url_blacklist = "https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/configs/blacklist-kucoin.json" #Change with your exchange blacklist
-file = "/your-path/NostalgiaForInfinityX2.py" #Change with your strategy file path
-file_blacklist = "/your-path/blacklist-kucoin.json" #Change with your blacklist file path
-command = "cd /bots/freqtrade && /usr/bin/docker-compose restart" #Change with your docker-compose file path
-bot_token = "your-telegram-bot-token" #Change with your Telegram bot token
-chat_id = "your-telegram-chat-id" #Change with your Telegram chat ID
+url_blacklist = "https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/configs/blacklist-kucoin.json"   # Change with your exchange blacklist
+file = "/your-path/NostalgiaForInfinityX2.py"   # Change with your strategy file path
+file_blacklist = "/your-path/blacklist-kucoin.json"     # Change with your blacklist file path
+command = "cd /bots/freqtrade && /usr/bin/docker-compose restart"   # Change with your docker-compose file path
+bot_token = "your-telegram-bot-token"   # Change with your Telegram bot token
+chat_id = "your-telegram-chat-id"   # Change with your Telegram chat ID
 change = False
 
 def check_version_online(url):
@@ -68,6 +68,7 @@ if remote_content != local_content:
     send_notification(bot_token, chat_id, "New version of blacklist detected. Upgrade in progress...")
     with open(file_blacklist, 'w') as f:
         f.write(remote_content)
+    print("Updated blacklist")
     change = True
 else:
     print("Blacklist : Updated version")

@@ -8,10 +8,15 @@ If there is a difference, it updates the local version, restarts the docker, and
 ![upgrade screen telegram](https://i.imgur.com/66s1rgV.png)
 
 ## Adapt the script
-You have to modify the following variables with the path of your strategy and the path of your docker-compose.yml :
+You have to modify the following variables with the path of your strategy, your blacklist and your docker-compose.yml :
 ```
 file = "/your-path/NostalgiaForInfinityX2.py"
+file_blacklist = "/your-path/blacklist-kucoin.json"
 command = "cd your-docker-compose-path && /usr/bin/docker-compose restart"
+```
+You must also adapt the URL of the blacklist with the one adapted to your exchange :
+```
+url_blacklist = "https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/configs/blacklist-kucoin.json"
 ```
 You must also enter your Telegram token and chat-id to receive notifications when updates are made:
 ```
@@ -30,5 +35,5 @@ And I add the following line:
 ```
 
 ## Next developments:
-- Update the blacklist associated with his exchange and his crypto currency at the same time
+- ~~Update the blacklist associated with his exchange and his crypto currency at the same time
 - Automatic execution of the script at each commit of the NFI repo.

@@ -75,7 +75,7 @@ else:
 
 #Restart process
 if change == True:
-    send_notification(bot_token, chat_id, "Upgrade completed. Restart of services...")
+    send_notification(bot_token, chat_id, "Upgrade completed. Restart services...")
     subprocess.run(command, shell=True)
     print("Restarted services")
 

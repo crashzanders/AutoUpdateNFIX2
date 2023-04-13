@@ -1,7 +1,7 @@
 # AutoUpdateNFIX2
 Python script that automates the update of the freqtrade strategy of NostalgiaForInfinityX2 (https://github.com/iterativv/NostalgiaForInfinity) and/or the blacklist and/or pairlist associated with your exchange.
 
-## How does it work?
+## ⚡ How does it work?
 The script checks the online and local version of the strategy and/or blacklist and/or pairlist.
 There are 4 files available:
 - update_strategy: update only the strategy
@@ -10,10 +10,11 @@ There are 4 files available:
 - update_strategy_blacklist_pairlist: update of the strategy, the blacklist and the pairlist
  
 If there is a difference, it updates the local version, restarts the docker, and notifies the user on Telegram of the update.
+<p align="center">
+<img src="https://i.imgur.com/SgE3nYI.png"/></a>
+</p>
 
-![upgrade screen telegram](https://i.imgur.com/66s1rgV.png)
-
-## Adapt the script
+## 🔧 Adapt the script
 You have to modify the following variables with the path of your strategy, your blacklist/pairlist and your docker-compose.yml :
 ```
 file = "/your-path/NostalgiaForInfinityX2.py"
@@ -31,7 +32,7 @@ bot_token = "6XXXXXXXXXXXXXXXXXXXXXXXX8U"
 chat_id = "12XXXXX35"
 ```
 
-## Automatically run the script :
+## 📤 Automatically run the script :
 Personally I want the script to be executed every hour to be updated as often as possible. To do this I run the following command on my server:
 ```
 sudo crontab -e
@@ -41,6 +42,6 @@ And I add the following line:
 15 * * * * /usr/bin/python3 /your-path/update_strategie.py >> /var/log/logs_update_strategie.log 2>&1
 ```
 
-## Next developments:
+## 🚀 Next developments:
 - [x] Update the blacklist associated with his exchange and his crypto currency at the same time
 - [ ] Automatic execution of the script at each commit of the NFI repo.

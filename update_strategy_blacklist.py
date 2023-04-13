@@ -1,4 +1,4 @@
-# AutoUpdateNFIX2
+# AutoUpdateNFIX2 : Strategy + Blacklist
 # Author : crashzanders
 # Version : 1.2
 

@@ -42,5 +42,5 @@ And I add the following line:
 ```
 
 ## Next developments:
-- ~~Update the blacklist associated with his exchange and his crypto currency at the same time~~
-- Automatic execution of the script at each commit of the NFI repo.
+[x] Update the blacklist associated with his exchange and his crypto currency at the same time
+[ ] Automatic execution of the script at each commit of the NFI repo.

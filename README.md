@@ -8,6 +8,7 @@ There are 4 files available:
 - update_strategy_blacklist: update of strategy and blacklist
 - update_strategy_pairlist: update of strategy and pairlist
 - update_strategy_blacklist_pairlist: update of the strategy, the blacklist and the pairlist
+
 If there is a difference, it updates the local version, restarts the docker, and notifies the user on Telegram of the update.
 
 ![upgrade screen telegram](https://i.imgur.com/66s1rgV.png)

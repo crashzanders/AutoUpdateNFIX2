@@ -44,4 +44,5 @@ And I add the following line:
 
 ## 🚀 Next developments:
 - [x] Update the blacklist associated with his exchange and his crypto currency at the same time
+- [x] Update the pairlist associated with his exchange and his crypto currency at the same time
 - [ ] Automatic execution of the script at each commit of the NFI repo.

@@ -33,6 +33,7 @@ chat_id = "12XXXXX35"
 ```
 
 ## 📤 Automatically run the script :
+###  🕖 With a cron:
 Personally I want the script to be executed every hour to be updated as often as possible. To do this I run the following command on my server:
 ```
 sudo crontab -e
@@ -41,7 +42,22 @@ And I add the following line:
 ```
 15 * * * * /usr/bin/python3 /your-path/update_strategie.py >> /var/log/logs_update_strategie.log 2>&1
 ```
-
+### 💻 With a script:
+For people who don't have access to the cron of their server it is possible to use this script (provided by mandark of the NFI Discord):
+```
+#!/bin/bash
+while [ : ]
+do
+    dt=date +%d-%m-%y-%H:%M:%S
+    echo "Last pole :" $dt
+        cd /usr/bin/python3 /your-path/update_strategie.py >> /var/log/logs_update_strategie.log 2>&1
+    sleep 600 ## Update this based on how frequently you want to run the script.
+done
+```
+Save this as run_cron.sh and execute as :
+```
+nohup sh run_cron.sh &
+```
 ## 🚀 Next developments:
 - [x] Update the blacklist associated with his exchange and his crypto currency at the same time
 - [x] Update the pairlist associated with his exchange and his crypto currency at the same time

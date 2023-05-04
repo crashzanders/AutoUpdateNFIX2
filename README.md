@@ -40,17 +40,18 @@ sudo crontab -e
 ```
 And I add the following line:
 ```
-15 * * * * /usr/bin/python3 /your-path/update_strategie.py >> /var/log/logs_update_strategie.log 2>&1
+15 * * * * /usr/bin/python3 /your-path/update_strategy.py >> /var/log/logs_update_strategy.log 2>&1
 ```
 ### 💻 With a script:
-For people who don't have access to the cron of their server it is possible to use this script (provided by mandark of the NFI Discord):
+For people who don't have access to the cron of their server it is possible to use this script (provided by mandark of the NFI Discord/@Mandark-droid
+):
 ```
-#!/bin/bash
+ #!/bin/bash
 while [ : ]
 do
     dt=date +%d-%m-%y-%H:%M:%S
     echo "Last pole :" $dt
-        cd /usr/bin/python3 /your-path/update_strategie.py >> /var/log/logs_update_strategie.log 2>&1
+        cd /home/user/;python update_strategy_blacklist_pairlist.py >>log_update_strategy.log 2>&1
     sleep 600 ## Update this based on how frequently you want to run the script.
 done
 ```

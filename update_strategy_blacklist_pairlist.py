@@ -1,15 +1,13 @@
-# AutoUpdateNFIX2 : Strategy
+#!/usr/bin/env python3
+# AutoUpdateNFIX2 : Strategy + Blacklist + Pairlist
 # Author : crashzanders
-# Version : 1.2
+# Version : 1.3
 
 import requests, re, subprocess
 from datetime import datetime
 
-url = "https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityX2.py"
-file = "/your-path/NostalgiaForInfinityX2.py"   # Change with your strategy file path
-command = "cd /bots/freqtrade && /usr/bin/docker-compose restart"   # Change with your docker-compose file path
-bot_token = "your-telegram-bot-token"   # Change with your Telegram bot token
-chat_id = "your-telegram-chat-id"   # Change with your Telegram chat ID
+from config import url, url_blacklist, url_pairlist, file, file_blacklist, file_pairlist, command, bot_token, chat_id
+
 change = False
 
 def check_version_online(url):
@@ -55,6 +53,36 @@ if version_file != version_online:
     change = True
 else:
     print("Strategy : Updated version")
+
+#Check and upgrade blacklist file
+response = requests.get(url_blacklist)
+remote_content = response.content.decode('utf-8')
+with open(file_blacklist, 'r') as f:
+    local_content = f.read()
+if remote_content != local_content:
+    print("New blacklist version detected: Update")
+    send_notification(bot_token, chat_id, "New version of blacklist detected. Upgrade in progress...")
+    with open(file_blacklist, 'w') as f:
+        f.write(remote_content)
+    print("Updated blacklist")
+    change = True
+else:
+    print("Blacklist : Updated version")
+    
+#Check and upgrade pairlist file
+response = requests.get(url_pairlist)
+remote_content = response.content.decode('utf-8')
+with open(file_pairlist, 'r') as f:
+    local_content = f.read()
+if remote_content != local_content:
+    print("New pairlist version detected: Update")
+    send_notification(bot_token, chat_id, "New version of pairlist detected. Upgrade in progress...")
+    with open(file_pairlist, 'w') as f:
+        f.write(remote_content)
+    print("Updated pairlist")
+    change = True
+else:
+    print("pairlist : Updated version")
 
 #Restart process
 if change == True:

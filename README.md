@@ -4,10 +4,10 @@ Python script that automates the update of the freqtrade strategy of NostalgiaFo
 ## ⚡ How does it work?
 The script checks the online and local version of the strategy and/or blacklist and/or pairlist.
 There are 4 files available:
-- update_strategy: update only the strategy
-- update_strategy_blacklist: update of strategy and blacklist
-- update_strategy_pairlist: update of strategy and pairlist
-- update_strategy_blacklist_pairlist: update of the strategy, the blacklist and the pairlist
+- update_strategy.py: update only the strategy
+- update_strategy_blacklist.py: update of strategy and blacklist
+- update_strategy_pairlist.py: update of strategy and pairlist
+- update_strategy_blacklist_pairlist.py: update of the strategy, the blacklist and the pairlist
  
 If there is a difference, it updates the local version, restarts the docker, and notifies the user on Telegram of the update.
 <p align="center">
@@ -15,16 +15,17 @@ If there is a difference, it updates the local version, restarts the docker, and
 </p>
 
 ## 🔧 Adapt the script
-You have to modify the following variables with the path of your strategy, your blacklist/pairlist and your docker-compose.yml :
+You have to modify the following variables with the path of your repo and, optionally, the name of your docker service :
 ```
-file = "/your-path/NostalgiaForInfinityX2.py"
-file_blacklist = "/your-path/blacklist-kucoin.json"
-file_pairlist = "/your-path/pairlist-volume-kucoin-usdt.json"
-command = "cd your-docker-compose-path && /usr/bin/docker-compose restart"
+rootdir = "/your-path/" # directory where you've cloned the repo
+docker_service = "" # (optional) docker service name that needs to be restarted (defaults to all)
 ```
-You must also adapt the URL of the blacklist with the one adapted to your exchange :
+You must also adapt the URLs of the blacklist and the pairlist with the ones adapted to your exchange :
 ```
 url_blacklist = "https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/configs/blacklist-kucoin.json"
+file_blacklist = rootdir + "/configs/blacklist-kucoin.json"
+url_pairlist = "https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/configs/pairlist-volume-kucoin-usdt.json"
+file_pairlist = rootdir + "/configs/pairlist-volume-kucoin-usdt.json"
 ```
 You must also enter your Telegram token and chat-id to receive notifications when updates are made:
 ```
@@ -51,7 +52,7 @@ while [ : ]
 do
     dt=date +%d-%m-%y-%H:%M:%S
     echo "Last pole :" $dt
-        cd /home/user/;python update_strategy_blacklist_pairlist.py >>log_update_strategy.log 2>&1
+        cd /home/user/; python update_strategy_blacklist_pairlist.py >> log_update_strategy.log 2>&1
     sleep 600 ## Update this based on how frequently you want to run the script.
 done
 ```

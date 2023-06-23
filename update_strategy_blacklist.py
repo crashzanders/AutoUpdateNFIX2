@@ -1,17 +1,13 @@
+#!/usr/bin/env python3
 # AutoUpdateNFIX2 : Strategy + Blacklist
 # Author : crashzanders
-# Version : 1.2
+# Version : 1.3
 
 import requests, re, subprocess
 from datetime import datetime
 
-url = "https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/NostalgiaForInfinityX2.py"
-url_blacklist = "https://raw.githubusercontent.com/iterativv/NostalgiaForInfinity/main/configs/blacklist-kucoin.json"   # Change with your exchange blacklist
-file = "/your-path/NostalgiaForInfinityX2.py"   # Change with your strategy file path
-file_blacklist = "/your-path/blacklist-kucoin.json"     # Change with your blacklist file path
-command = "cd /bots/freqtrade && /usr/bin/docker-compose restart"   # Change with your docker-compose file path
-bot_token = "your-telegram-bot-token"   # Change with your Telegram bot token
-chat_id = "your-telegram-chat-id"   # Change with your Telegram chat ID
+from config import url, url_blacklist, file, file_blacklist, command, bot_token, chat_id
+
 change = False
 
 def check_version_online(url):
